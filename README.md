@@ -123,3 +123,17 @@
 - 管理员可以暂停所有存款和提款操作
 - 使用 `Pausable` 模式
 - 只有管理员可以恢复
+
+
+---
+
+### 阶段四：支持离线授权的银行
+
+- 修改 TokenBank 合约 （https://github.com/DylanJinx/zzj/blob/main/src/3_TokenBank.sol）
+添加 permitDeposit 函数，支持离线签名授权进行存款
+- 创建支持 permit 的 ERC20 代币用于测试
+- 测试用例：
+1.正常签名存款成功
+2.签名过期应失败
+3.无效签名应失败
+(foundry使用solidity测试)
