@@ -1,0 +1,49 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+
+# Remappings - 导入路径映射
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+    "forge-std/=lib/forge-std/src/",
+    "ds-test/=lib/forge-std/lib/ds-test/src/"
+]
+
+# Solidity 编译器设置
+solc = "0.8.26"
+
+# 测试设置
+[fuzz]
+runs = 256
+max_test_rejects = 65536
+seed = "0x3e8"
+
+[invariant]
+runs = 256
+depth = 15
+fail_on_revert = false
+
+# 格式化设置
+[fmt]
+line_length = 120
+tab_width = 4
+bracket_spacing = true
+int_types = "long"
+multiline_func_header = "all"
+quote_style = "double"
+number_underscore = "preserve"
+wrap_comments = false
+
+# 以太坊网络配置
+[rpc_endpoints]
+sepolia = "https://sepolia.infura.io/v3/25dea79e22ec4e00ad658a9a9bda50b1"
+localhost = "http://127.0.0.1:8545"
+
+[etherscan]
+mainnet = { key = "${ETHERSCAN_API_KEY}" }
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
